@@ -1,8 +1,8 @@
-# 🏳️‍🌈 pridecat
+# 🏳️‍🌈 prideflag
 
-Like **cat**, but more colorful - inspired by [lolcat](https://github.com/busyloop/lolcat).
+Prints prideflags! - inspired by [pridecat](https://github.com/lunasorcery/pridecat) on which this code is based on.
 
-Colorize your terminal output with pride!
+Colorize your terminal with pride flags!
 
 ![](docs/screenshot.png)
 
@@ -79,8 +79,8 @@ Colorize your terminal output with pride!
 On any *nix system it _should_ be as simple as:
 
 ```
-git clone https://github.com/lunasorcery/pridecat.git
-cd pridecat
+git clone https://github.com/CharlotteCross1998/prideflags.git
+cd prideflag
 make && make install
 ```
 
@@ -94,4 +94,4 @@ It also appears to work out-of-the-box in WSL.
 
 ## License
 
-**pridecat** is made available under the Creative Commons Attribution-NonCommercial 4.0 International license.
+**prideflag** is made available under the Creative Commons Attribution-NonCommercial 4.0 International license.

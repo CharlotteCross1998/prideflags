@@ -1,4 +1,4 @@
-# 💖 Thanks for your interest in contributing to **pridecat**!
+# 💖 Thanks for your interest in contributing to **prideflag**!
 
 ## 🏳️‍🌈 I want to add a new flag!
 
@@ -23,4 +23,4 @@ That's great! Your patch is welcomed.
 I'm not looking to expand the scope of the project too much, so please consider the following:
 
 * If it can be emulated with existing commands (for example: collapsing consecutive empty lines can be performed using `cat -s`), then it's not really within the scope of this project.
-* Otherwise, if it's something that makes sense _specifically_ for **pridecat**, please open an Issue for it, and let's discuss it before you start sending patches in.
+* Otherwise, if it's something that makes sense _specifically_ for **prideflag**, please open an Issue for it, and let's discuss it before you start sending patches in.

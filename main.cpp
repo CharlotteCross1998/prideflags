@@ -274,14 +274,10 @@ void resetColor() {
 }
 
 void parseCommandLine(int argc, char** argv) {
-	bool finishedReadingFlags = false;
 	for (int i = 1; i < argc; ++i) {
-		if (finishedReadingFlags) {
-			g_filesToCat.push_back(argv[i]);
-		}
-		else if (strEqual(argv[i], "-h") || strEqual(argv[i], "--help")) {
-			printf("pridecat!\n");
-			printf("It's like cat but more colorful :)\n");
+		if (strEqual(argv[i], "-h") || strEqual(argv[i], "--help")) {
+			printf("prideflag!\n");
+			printf("It prints pride flags!\n");
 
 			printf("\nCurrently available flags:\n");
 			for (const auto& flag : allFlags) {
@@ -320,9 +316,8 @@ void parseCommandLine(int argc, char** argv) {
 			printf("      Display this message\n\n");
 
 			printf("Examples:\n");
-			printf("  pridecat f - g          Output f's contents, then stdin, then g's contents.\n");
-			printf("  pridecat                Copy stdin to stdout, but with rainbows.\n");
-			printf("  pridecat --trans --bi   Alternate between trans and bisexual pride flags.\n");
+			printf("  prideflag --trans			Print the trans flag.\n");
+			printf("  prideflag --trans --bi	Alternate between trans and bisexual pride flags.\n");
 			exit(0);
 		}
 		else if (strEqual(argv[i], "-f") || strEqual(argv[i], "--force")) {
@@ -343,26 +338,15 @@ void parseCommandLine(int argc, char** argv) {
 		else if (strEqual(argv[i], "-d") || strEqual(argv[i], "--darken")) {
 			g_colorAdjustment = colorAdjust::darken;
 		}
-		else if (strEqual(argv[i], "--")) {
-			finishedReadingFlags = true;
-		}
 		else if (startsWith(argv[i], "--")) {
 			std::string const flagName = resolveAlias(argv[i]+2);
 			const auto& flag = allFlags.find(flagName);
 			if (flag != allFlags.end()) {
 				pushFlag(flag->second);
 			} else {
-				fprintf(stderr, "pridecat: Unknown flag '%s'\n", argv[i]);
+				fprintf(stderr, "prideflag: Unknown flag '%s'\n", argv[i]);
 				exit(1);
 			}
-		}
-		else if (strEqual(argv[i], "-")) {
-			// use an empty string in the array to represent stdin
-			// so we can still actually have a file called '-'
-			g_filesToCat.push_back("");
-		}
-		else {
-			g_filesToCat.push_back(argv[i]);
 		}
 	}
 }
@@ -372,9 +356,10 @@ void abortHandler(int signo) {
 	exit(signo);
 }
 
-void catFile(FILE* fh) {
-	int c;
-	while ((c = getc(fh)) >= 0) {
+void catString(std::string input) {
+	for(size_t i = 0; i < input.length(); ++i)
+	{
+		int c = input.at(i);
 		if (c == '\n') {
 			resetColor();
 		}
@@ -422,33 +407,25 @@ int main(int argc, char** argv) {
 
 	parseCommandLine(argc, argv);
 
+	const std::string BLOCK = "█";
+
 	if (g_colorQueue.empty()) {
 		pushFlag(allFlags.at("lgbt"));
 	}
 
 	setColor(g_colorQueue[0]);
 
-	if (g_filesToCat.empty()) {
-		catFile(stdin);
-	} else {
-		for (auto const& filepath : g_filesToCat) {
-			if (filepath == "") {
-				catFile(stdin);
-			} else {
-				FILE* fh = fopen(filepath.c_str(), "rb");
-				if (!fh) {
-					fprintf(
-						stderr,
-						"pridecat: Could not open %s for reading.\n",
-						filepath.c_str()
-					);
-					return 1;
-				}
-				catFile(fh);
-				fclose(fh);
-			}
+	std::string flag;
+	for(size_t y = 0; y < g_colorQueue.size(); ++y)
+	{
+		for(int x = 0; x < 40; ++x)
+		{
+			flag += BLOCK;
 		}
+		flag.push_back('\n');
 	}
+
+	catString(flag);
 
 	resetColor();
 

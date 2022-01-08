@@ -13,4 +13,4 @@ jobs:
     steps:
       - checkout
       - run: make
-      - run: ./pridecat --help
+      - run: ./prideflag --help

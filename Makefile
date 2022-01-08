@@ -1,15 +1,17 @@
-CXX ?= clang
+CXX ?= gcc
 
-all: pridecat
+.PHONY: all prideflag clean
 
-pridecat: main.cpp
-	$(CXX) main.cpp -o pridecat -std=c++11 -lstdc++ -Wall -Wextra -O3
+all: prideflag
 
-install: pridecat
-	cp pridecat /usr/local/bin/pridecat
+prideflag: main.cpp
+	$(CXX) main.cpp -o prideflag -std=c++11 -lstdc++ -Wpedantic -Wall -Wextra -Werror -O3
+
+install: prideflag
+	cp prideflag /usr/local/bin/prideflag
 
 uninstall:
-	rm -f /usr/local/bin/pridecat
+	rm -f /usr/local/bin/prideflag
 
 clean:
-	rm -f pridecat
+	rm -f prideflag
