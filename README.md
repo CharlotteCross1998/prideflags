@@ -4,6 +4,8 @@ Prints prideflags! - inspired by [pridecat](https://github.com/lunasorcery/pride
 
 Colorize your terminal with pride flags!
 
+[![CircleCI](https://dl.circleci.com/status-badge/img/gh/CharlotteCross1998/prideflags/tree/main.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/gh/CharlotteCross1998/prideflags/tree/main)
+
 ![](docs/screenshot.png)
 
 ## Flags
