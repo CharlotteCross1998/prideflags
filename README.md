@@ -7,8 +7,7 @@ Colorize your terminal with pride flags!
 [![Packaging status](https://repology.org/badge/vertical-allrepos/prideflag.svg)](https://repology.org/project/prideflag/versions)
 
 [![CircleCI](https://dl.circleci.com/status-badge/img/gh/CharlotteCross1998/prideflags/tree/main.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/gh/CharlotteCross1998/prideflags/tree/main)
-
-
+[![HitCount](https://hits.dwyl.com/charlottecross1998/owo.svg?style=flat-square)](http://hits.dwyl.com/charlottecross1998/owo)
 
 ![](docs/screenshot.png)
 
