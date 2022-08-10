@@ -12,5 +12,5 @@ jobs:
       - image: gcc:8.2
     steps:
       - checkout
-      - run: make
-      - run: ./prideflag --help
+      - run: sudo make install
+      - run: prideflag --help
